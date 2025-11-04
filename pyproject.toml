@@ -5,15 +5,18 @@ description = "Django web UI for automated database provisioning, backups, and s
 readme = "README.md"
 authors = [{ name = "Joakim Hellsén", email = "tlovinator@gmail.com" }]
 requires-python = ">=3.14"
-dependencies = []
-
-[project.scripts]
-db-handholder = "db_handholder:main"
-
-[build-system]
-requires = ["uv_build>=0.8.23,<0.9.0"]
-build-backend = "uv_build"
-
+dependencies = [
+    "django",
+    "django-auto-prefetch",
+    "django-browser-reload",
+    "django-debug-toolbar",
+    "django-htmx",
+    "django-minify-html",
+    "django-stubs-ext",
+    "django-types",
+    "django-watchfiles",
+    "platformdirs",
+]
 
 [tool.ruff]
 preview = true
