@@ -16,6 +16,7 @@ dependencies = [
     "django-types",
     "django-watchfiles",
     "platformdirs",
+    "whitenoise",
 ]
 
 [tool.ruff]

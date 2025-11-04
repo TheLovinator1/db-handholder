@@ -22,6 +22,7 @@ if not DEBUG:
 
 TIME_ZONE = "UTC"
 STATIC_URL = "static/"
+STATIC_ROOT: Path = BASE_DIR / "staticfiles"
 
 SITE_ID: int = 1
 
@@ -30,6 +31,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django_browser_reload",
     "django_watchfiles",
@@ -40,6 +42,7 @@ INSTALLED_APPS: list[str] = [
 MIDDLEWARE: list[str] = [
     "django_minify_html.middleware.MinifyHtmlMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -84,5 +87,12 @@ DATABASES: dict[str, dict[str, str | Path | dict[str, str]]] = {
             ),
             "transaction_mode": "IMMEDIATE",
         },
+    },
+}
+
+# TODO(TheLovinator): Use whitenoise[brotli] in production
+STORAGES: dict[str, dict[str, str]] = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }

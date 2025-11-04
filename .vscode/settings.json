@@ -11,10 +11,12 @@
         "isort",
         "Joakim",
         "makemigrations",
+        "nostatic",
         "platformdirs",
         "pydocstyle",
         "runserver",
         "TheLovinator",
-        "watchfiles"
+        "watchfiles",
+        "whitenoise"
     ]
 }
