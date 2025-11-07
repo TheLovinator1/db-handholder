@@ -9,5 +9,6 @@ if TYPE_CHECKING:
 
 urlpatterns: list[URLResolver] = [
     path(route="__reload__/", view=include("django_browser_reload.urls")),
+    path("", include("databases.urls")),
     *debug_toolbar_urls(),
 ]

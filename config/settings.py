@@ -37,6 +37,7 @@ INSTALLED_APPS: list[str] = [
     "django_watchfiles",
     "debug_toolbar",
     "django_minify_html",
+    "databases",
 ]
 
 MIDDLEWARE: list[str] = [

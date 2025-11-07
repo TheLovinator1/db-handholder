@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Database</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Add a new database</h1>
+
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="message">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if form.non_field_errors %}
+      <div class="errors">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      <div>
+        <label for="id_name">Name</label>
+        {{ form.name }}
+        {% if form.name.help_text %}<div class="helptext">{{ form.name.help_text }}</div>{% endif %}
+        {% if form.name.errors %}<div class="field-errors">{{ form.name.errors|join:", " }}</div>{% endif %}
+      </div>
+
+      <div>
+        <label for="id_db_type">Database type</label>
+        {{ form.db_type }}
+        {% if form.db_type.help_text %}<div class="helptext">{{ form.db_type.help_text }}</div>{% endif %}
+        {% if form.db_type.errors %}<div class="field-errors">{{ form.db_type.errors|join:", " }}</div>{% endif %}
+      </div>
+
+      <div class="actions">
+        <button type="submit">Create database</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
